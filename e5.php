@@ -106,7 +106,7 @@ foreach($tax_list as $addr=>$arr){
 
 // (G) SAVE TO SERVER
     $writer = new \PhpOffice\PhpSpreadsheet\Writer\Xlsx($spreadsheet);
-    $writer->save(__DIR__."/data/$addr.xlsx");
+    $writer->save(__DIR__."/data/result/$addr.xlsx");
 
     unset($spreadsheet);
     unset($writer);
