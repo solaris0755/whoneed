@@ -51,7 +51,7 @@ function get_tax(){
     }
     return $arr;
 }
-function find_bank($shop){
+function find_bank($shop, $addr){
     global $bank_list;
 
     foreach($bank_list as $k=>$v){
@@ -59,6 +59,7 @@ function find_bank($shop){
             return $bank_list[$k];
         }
     }
+    echo "$addr -> $shop".PHP_EOL;
     return null;
 }
 
@@ -81,7 +82,7 @@ foreach($tax_list as $addr=>$arr){
     $i=1;
     $spreadsheet = $reader->load(__DIR__.'/data/tax/form.xlsx');
     foreach($arr as $v){
-        $bank_info = find_bank($v['shop']);
+        $bank_info = find_bank($v['shop'], $addr);
 
         $sheet = clone $spreadsheet->getSheet(0);
         $sheet->setTitle($v['shop']);
