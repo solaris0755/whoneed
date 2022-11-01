@@ -47,7 +47,7 @@ $date_cols = array(
 );
 
 
-$arr = find_all_files(__DIR__.'/../excel_data/202209');
+$arr = find_all_files(__DIR__.'/data/kim/202210');
 //print_r($arr);
 
 function work($src){
@@ -63,7 +63,7 @@ function work($src){
     $reader = IOFactory::createReader("Xlsx");
     $sp = $reader->load($src);
 //    $sp->setActiveSheetIndex(0);// 첫번째 시트
-    $sp->setActiveSheetIndex(1);// 두번째 시트
+    $sp->setActiveSheetIndex(0);// 첫번째 시트
 
     for($i=0; $i<100; $i++){
         $y=5+$i*4;
