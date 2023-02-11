@@ -33,3 +33,59 @@ having count(1)>1
 order by 3 desc
 
 ========================================================================
+kim1.php
+년월, 현장
+    이름, 주민, 전화, 주소
+    공수, 일수, 단가
+    수당합계
+    공제항목 6가지
+
+create table salary
+(
+    num     int auto_increment
+        primary key,
+    ym      char(6)     not null,
+    place   varchar(30) not null,
+    mb_no   int         null,
+    gongsoo int         null,
+    danga   int         null,
+    sal     int         null,
+    gab     int         null,
+    ju      int         null,
+    go      int         null,
+    kuk     int         null,
+    health  int         null,
+    jang    int         null,
+    realsal int         null
+);
+create table emp
+(
+    num   int auto_increment
+        primary key,
+    name  varchar(20)  not null,
+    jumin varchar(20)  not null,
+    addr  varchar(100) null,
+    hp    varchar(20)  null,
+    constraint idx1
+        unique (jumin)
+);
+
+
+select
+s.ym 년월
+,s.place 현장
+,e.name 이름
+,e.jumin 주민번호
+,e.hp 연락처
+,e.addr 주소
+,gongsoo 공수
+, danga 단가
+, sal 지급
+, gab 갑근세
+, ju 주민번호
+, go 고용보험
+, kuk 국민연금
+, health 건강보험
+, jang 장기요양보험
+, realsal 실지급
+from salary s

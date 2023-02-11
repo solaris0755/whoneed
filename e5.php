@@ -38,7 +38,6 @@ function get_tax(){
     $spreadsheet = $reader->load(__DIR__.'/data/tax/tax1.xlsx');
     $sheet = $spreadsheet->getSheet($spreadsheet->getFirstSheetIndex());
     $list = $sheet->toArray();
-//    print_r($list);die;
     $arr = [];
     foreach($list as $row){
         $v = [
@@ -56,7 +55,6 @@ function find_bank($shop, $addr){
     global $bank_list;
 
     foreach($bank_list as $k=>$v){
-//        echo "shop=>[$shop]\n";
         if( strstr($k, $shop)) {
             return $bank_list[$k];
         }
