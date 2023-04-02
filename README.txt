@@ -47,6 +47,7 @@ create table salary
     ym      char(6)     not null,
     place   varchar(30) not null,
     mb_no   int         null,
+    ilsoo int         null,
     gongsoo int         null,
     danga   int         null,
     sal     int         null,
@@ -70,22 +71,27 @@ create table emp
         unique (jumin)
 );
 
+truncate table salary;
+truncate table emp;
+
 
 select
-s.ym 년월
-,s.place 현장
-,e.name 이름
-,e.jumin 주민번호
-,e.hp 연락처
-,e.addr 주소
-,gongsoo 공수
-, danga 단가
-, sal 지급
-, gab 갑근세
-, ju 주민번호
-, go 고용보험
-, kuk 국민연금
-, health 건강보험
-, jang 장기요양보험
-, realsal 실지급
+    s.ym 년월
+     ,s.place 현장
+     ,e.name 이름
+     ,e.jumin 주민번호
+     ,e.hp 연락처
+     ,e.addr 주소
+     ,ilsoo 일수
+     ,gongsoo 공수
+     , danga 단가
+     , sal 지급
+     , gab 갑근세
+     , ju 주민번호
+     , go 고용보험
+     , kuk 국민연금
+     , health 건강보험
+     , jang 장기요양보험
+     , realsal 실지급
 from salary s
+join emp e on e.num=s.mb_no

@@ -46,24 +46,23 @@ $date_cols = array(
     31 => 'CD',
 );
 
-$ym='202201';
-$arr = find_all_files(__DIR__."/data/kim/$ym");
+//$ym='202210';
+$arr = find_all_files(__DIR__."/data/kim/ttt");
 //print_r($arr);
 
-function file_work($src){
-    global $ym;
 
-//    echo "$src\n";
+function file_work($src){
+    preg_match('/[0-9]{4}/', $src, $match);
+    $ym = '20'.$match[0];
+
     preg_match('/\((.*)\)/', $src, $match);
-//    print_r($match); die;
     $place = $match[1];
     echo "사업장 : $place\n";
 
     // Read the Excel file.
     $reader = IOFactory::createReader("Xlsx");
     $sp = $reader->load($src);
-//    $sp->setActiveSheetIndex(0);// 첫번째 시트
-    $sp->setActiveSheetIndex(1);// 두번째 시트
+    $sp->setActiveSheetIndex(2);// 세번째 시트
 
     for($i=0; $i<100; $i++){
         $data = [];
@@ -135,6 +134,7 @@ SET
 ym='{$data['년월']}',
 place='{$data['현장']}',
 mb_no=$mb_no,
+ilsoo='{$data['일수']}',
 gongsoo='{$data['공수']}',
 danga='{$data['단가']}',
 sal='{$data['지급']}',
@@ -146,7 +146,7 @@ health='{$data['건강보험']}',
 jang='{$data['장기요양보험']}',
 realsal='{$data['실지급']}'
 SQL;
-    debug_log($sql);
+//    debug_log($sql);
     sql_query($sql);
 
 }

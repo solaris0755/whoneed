@@ -97,7 +97,7 @@ if (file_exists($dbconfig_file)) {
     $g5['connect_db'] = $connect_db;
 
     sql_set_charset(G5_DB_CHARSET, $connect_db);
-    if(defined('G5_MYSQL_SET_MODE') && G5_MYSQL_SET_MODE) sql_query("SET SESSION sql_mode = ''");
+    sql_query("SET SESSION sql_mode = ''");
     if (defined('G5_TIMEZONE')) sql_query(" set time_zone = '".G5_TIMEZONE."'");
 }
 //==============================================================================
@@ -189,6 +189,7 @@ if ($is_admin != 'super') {
 
 
 // common.php 파일을 수정할 필요가 없도록 확장합니다.
+/*
 $extend_file = array();
 $tmp = dir(G5_EXTEND_PATH);
 while ($entry = $tmp->read()) {
@@ -206,6 +207,7 @@ if(!empty($extend_file) && is_array($extend_file)) {
     unset($file);
 }
 unset($extend_file);
+ */
 //
 //
 //// autoload
