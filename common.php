@@ -25,14 +25,14 @@ function g5_path()
     $document_root = str_replace($tilde_remove, '', $server_script_filename); 
     $pattern = '/.*?' . preg_quote($document_root, '/') . '/i';
     $root = preg_replace($pattern, '', $result['path']); 
-    $port = ($_SERVER['SERVER_PORT'] == 80 || $_SERVER['SERVER_PORT'] == 443) ? '' : ':'.$_SERVER['SERVER_PORT']; 
-    $http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on') ? 's' : '') . '://'; 
-    $user = str_replace(preg_replace($pattern, '', $server_script_filename), '', $server_script_name); 
-    $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME']; 
-    if(isset($_SERVER['HTTP_HOST']) && preg_match('/:[0-9]+$/', $host)) 
-        $host = preg_replace('/:[0-9]+$/', '', $host); 
-    $host = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*]/", '', $host); 
-    $result['url'] = $http.$host.$port.$user.$root; 
+//    $port = ($_SERVER['SERVER_PORT'] == 80 || $_SERVER['SERVER_PORT'] == 443) ? '' : ':'.$_SERVER['SERVER_PORT'];
+//    $http = 'http' . ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS']=='on') ? 's' : '') . '://';
+//    $user = str_replace(preg_replace($pattern, '', $server_script_filename), '', $server_script_name);
+//    $host = isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : $_SERVER['SERVER_NAME'];
+//    if(isset($_SERVER['HTTP_HOST']) && preg_match('/:[0-9]+$/', $host))
+//        $host = preg_replace('/:[0-9]+$/', '', $host);
+//    $host = preg_replace("/[\<\>\'\"\\\'\\\"\%\=\(\)\/\^\*]/", '', $host);
+//    $result['url'] = $http.$host.$port.$user.$root;
     return $result;
 }
 

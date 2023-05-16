@@ -342,7 +342,7 @@ function sql_query($sql, $error=G5_DISPLAY_SQL_ERROR, $link=null)
             'sql' => $sql,
             'elapsed' => $elapsed
             );
-		debug_log( $_SERVER['REQUEST_URI']. " #$# $sql #$# $elapsed" );
+		debug_log(  " #$# $sql #$# $elapsed" );
     }
 
     return $result;
@@ -368,7 +368,7 @@ function sql_list($sql, $error=G5_DISPLAY_SQL_ERROR, $link=null){
 	$list = [];
     $result = sql_query($sql, $error, $link);
 	for($i=0; $row=sql_fetch_array($result); $i++) {
-    	echo $row['num']."\n";
+//    	echo $row['num']."\n";
 		$list[]= $row;
 	}
 	return $list;
@@ -1315,53 +1315,6 @@ function get_params_merge_url($params, $url=''){
     $href .= $qc.$query.(isset($p['fragment']) ? "#{$p['fragment']}" : '');
 
     return $href;
-}
-
-// 문자열 암복호화
-class str_encrypt
-{
-    var $salt;
-    var $lenght;
-
-    function __construct($salt='')
-    {
-        if(!$salt)
-            $this->salt = md5(preg_replace('/[^0-9A-Za-z]/', substr(G5_MYSQL_USER, -1), $_SERVER['SERVER_SOFTWARE'].$_SERVER['DOCUMENT_ROOT']));
-        else
-            $this->salt = $salt;
-
-        $this->length = strlen($this->salt);
-    }
-
-    function encrypt($str)
-    {
-        $length = strlen($str);
-        $result = '';
-
-        for($i=0; $i<$length; $i++) {
-            $char    = substr($str, $i, 1);
-            $keychar = substr($this->salt, ($i % $this->length) - 1, 1);
-            $char    = chr(ord($char) + ord($keychar));
-            $result .= $char;
-        }
-
-        return strtr(base64_encode($result) , '+/=', '._-');
-    }
-
-    function decrypt($str) {
-        $result = '';
-        $str    = base64_decode(strtr($str, '._-', '+/='));
-        $length = strlen($str);
-
-        for($i=0; $i<$length; $i++) {
-            $char    = substr($str, $i, 1);
-            $keychar = substr($this->salt, ($i % $this->length) - 1, 1);
-            $char    = chr(ord($char) - ord($keychar));
-            $result .= $char;
-        }
-
-        return $result;
-    }
 }
 
 // 불법접근을 막도록 토큰을 생성하면서 토큰값을 리턴

@@ -95,3 +95,13 @@ select
      , realsal 실지급
 from salary s
 join emp e on e.num=s.mb_no
+======================================
+ERP 에서 데이터 추출
+create table erp_price (
+    num int auto_increment primary key ,
+    ca1 varchar(50),
+    ca2 varchar(50),
+    place varchar(100),
+    ym char(6),
+    price int
+);
