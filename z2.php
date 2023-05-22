@@ -47,7 +47,7 @@ $date_cols = array(
 );
 
 
-$arr = find_all_files(__DIR__.'/data/kim/202303');
+$arr = find_all_files(__DIR__.'/data/kim/202304');
 //print_r($arr);
 
 function work($src){
