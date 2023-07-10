@@ -98,6 +98,116 @@ select
      , realsal 실지급
 from salary s
 join emp e on e.num=s.mb_no
+
+======================================
+kim3.php
+
+create table g5_emp
+(
+    mb_no   int auto_increment primary key,
+    name  varchar(20)  not null,
+    jumin varchar(20)  not null,
+    addr  varchar(100) null,
+    hp    varchar(20)  null,
+    constraint idx1 unique (jumin)
+);
+drop table g5_sal;
+create table g5_sal(
+    num     int auto_increment   primary key,
+    ym      char(6)     not null,
+    place   varchar(30) not null,
+    mb_no   int         null,
+    d1 decimal(2,1),
+    d2 decimal(2,1),
+    d3 decimal(2,1),
+    d4 decimal(2,1),
+    d5 decimal(2,1),
+    d6 decimal(2,1),
+    d7 decimal(2,1),
+    d8 decimal(2,1),
+    d9 decimal(2,1),
+    d10 decimal(2,1),
+    d11 decimal(2,1),
+    d12 decimal(2,1),
+    d13 decimal(2,1),
+    d14 decimal(2,1),
+    d15 decimal(2,1),
+    d16 decimal(2,1),
+    d17 decimal(2,1),
+    d18 decimal(2,1),
+    d19 decimal(2,1),
+    d20 decimal(2,1),
+    d21 decimal(2,1),
+    d22 decimal(2,1),
+    d23 decimal(2,1),
+    d24 decimal(2,1),
+    d25 decimal(2,1),
+    d26 decimal(2,1),
+    d27 decimal(2,1),
+    d28 decimal(2,1),
+    d29 decimal(2,1),
+    d30 decimal(2,1),
+    d31 decimal(2,1),
+    공수 decimal(10,1),
+    일수 decimal(10,1),
+    단가 int,
+    금액 int,
+    수당 int,
+    합계 int,
+    갑근세 int,
+    주민세 int,
+    고용보험 int,
+    국민연금 int,
+    건강보험 int,
+    장기요양보험 int,
+    공제합계 int,
+    최종합계 int,
+    constraint idx1 unique (ym,place,mb_no)
+);
+
+truncate table g5_emp;
+truncate table g5_sal;
+select
+     place
+     , ym
+     , e.name
+     , e.jumin
+     , d1
+     , d2
+     , d3
+     , d4
+     , d5
+     , d6
+     , d7
+     , d8
+     , d9
+     , d10
+     , d11
+     , d12
+     , d13
+     , d14
+     , d15
+     , d16
+     , d17
+     , d18
+     , d19
+     , d20
+     , d21
+     , d22
+     , d23
+     , d24
+     , d25
+     , d26
+     , d27
+     , d28
+     , d29
+     , d30
+     , d31
+     , 공수, 일수, 단가, 금액, 수당, 합계, 갑근세, 주민세, 고용보험, 국민연금, 건강보험, 장기요양보험, 공제합계, 최종합계
+from g5_sal a
+join g5_emp e on e.mb_no=a.mb_no
+order by place, e.jumin, ym;
+
 ======================================
 ERP 에서 데이터 추출
 create table erp_price (
